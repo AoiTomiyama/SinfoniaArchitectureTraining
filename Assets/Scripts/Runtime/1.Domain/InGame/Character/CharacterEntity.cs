@@ -33,16 +33,23 @@ namespace SSTraining.Runtime.Domain.InGame.Character
         /// <summary> キャラクターの最大体力値を取得するプロパティ。 </summary>
         public Health MaxHealth => HealthEntity.MaxHealth;
 
-        public AttackPower AttackPower => Parameter.AttackPower;
-        public CriticalChance CriticalChance => Parameter.CriticalChance;
-        public CriticalDamage CriticalDamage => Parameter.CriticalDamage;
+        /// <summary> キャラクターの防御力を取得するプロパティ。 </summary>
         public Defense Defense => Parameter.Defense;
+
+        /// <summary> キャラクターの攻撃力を取得するプロパティ。 </summary>
+        public AttackPower AttackPower => Parameter.AttackPower;
+
+        /// <summary> キャラクターのクリティカル確率を取得するプロパティ。 </summary>
+        public CriticalChance CriticalChance => Parameter.CriticalChance;
+
+        /// <summary> キャラクターのクリティカル攻撃の倍率を取得するプロパティ。 </summary>
+        public CriticalDamage CriticalDamage => Parameter.CriticalDamage;
 
         /// <summary>
         ///     被ダメージを受け取るメソッド。ダメージ量を引数として受け取り、体力値を減少させる処理を行う。
-        ///     計算式は「次の体力値 = 現在体力値 - (ダメージ量 / 防御力)」とする。次の体力値が0未満になる場合は、0に設定される。
+        ///     次の体力値が0未満になる場合は、0に設定される。
         /// </summary>
-        /// <param name="damage"></param>
+        /// <param name="damage"> 被ダメージの量 </param>
         public void TakeDamage(Damage damage)
         {
             float nextHealthValue = Mathf.Min(0, CurrentHealth.Value - damage.Value);

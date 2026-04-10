@@ -3,8 +3,7 @@
 namespace SSTraining.Runtime.Application.InGame.Battle
 {
     /// <summary>
-    ///     弓兵の攻撃のうち、ヘッドショットが発生した場合の攻撃処理を表すクラス。
-    ///     
+    ///     弓兵の攻撃のうち、ヘッドショットが発生するかを計算するクラス。
     /// </summary>
     public class HeadshotAttackStep : IAttackStep
     {
