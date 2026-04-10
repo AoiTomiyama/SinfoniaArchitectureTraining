@@ -17,13 +17,6 @@ namespace SSTraining.Runtime.Domain.InGame.Unit
             _value = value;
         }
         
-        public static UnitCost operator +(UnitCost a, UnitCost b) => new UnitCost(a.Value + b.Value);
-        public static UnitCost operator -(UnitCost a, UnitCost b) => new UnitCost(a.Value - b.Value);
-        public static bool operator >(UnitCost a, UnitCost b) => a.Value > b.Value;
-        public static bool operator <(UnitCost a, UnitCost b) => a.Value < b.Value;
-        public static bool operator >=(UnitCost a, UnitCost b) => a.Value >= b.Value;
-        public static bool operator <=(UnitCost a, UnitCost b) => a.Value <= b.Value;
-        
         /// <summary> ユニットコストを取得するプロパティ。 </summary>
         public int Value => _value;
         private readonly int _value;

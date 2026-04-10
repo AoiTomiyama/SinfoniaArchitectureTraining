@@ -11,11 +11,15 @@ namespace SSTraining.Runtime.Domain.InGame.Character
         public CharacterEntity(
             CharacterName name,
             HealthEntity healthEntity,
-            CharacterParameter parameter)
+            Defense defense,
+            AttackParams attackParams,
+            MovementParams movementParams)
         {
             Name = name;
             HealthEntity = healthEntity;
-            Parameter = parameter;
+            Defense = defense;
+            AttackParams = attackParams;
+            MovementParams = movementParams;
         }
 
         /// <summary> キャラクターの名前を取得するプロパティ。 </summary>
@@ -24,26 +28,18 @@ namespace SSTraining.Runtime.Domain.InGame.Character
         /// <summary> キャラクターの体力値を管理するエンティティを取得するプロパティ。 </summary>
         public HealthEntity HealthEntity { get; }
 
-        /// <summary> キャラクターの各パラメーターを取得するプロパティ。 </summary>
-        public CharacterParameter Parameter { get; }
+        /// <summary> キャラクターの攻撃に関するパラメータを取得するプロパティ。 </summary>
+        public AttackParams AttackParams { get; }
 
-        /// <summary> キャラクターの現在体力値を取得するプロパティ。 </summary>
+        /// <summary> キャラクターの移動に関するパラメータを取得するプロパティ。 </summary>
+        public MovementParams MovementParams { get; }
+
+        public AttackPower AttackPower => AttackParams.AttackPower;
+        public CriticalChance CriticalChance => AttackParams.CriticalChance;
+        public CriticalDamage CriticalDamage => AttackParams.CriticalDamage;
         public Health CurrentHealth => HealthEntity.CurrentHealth;
-
-        /// <summary> キャラクターの最大体力値を取得するプロパティ。 </summary>
         public Health MaxHealth => HealthEntity.MaxHealth;
-
-        /// <summary> キャラクターの防御力を取得するプロパティ。 </summary>
-        public Defense Defense => Parameter.Defense;
-
-        /// <summary> キャラクターの攻撃力を取得するプロパティ。 </summary>
-        public AttackPower AttackPower => Parameter.AttackPower;
-
-        /// <summary> キャラクターのクリティカル確率を取得するプロパティ。 </summary>
-        public CriticalChance CriticalChance => Parameter.CriticalChance;
-
-        /// <summary> キャラクターのクリティカル攻撃の倍率を取得するプロパティ。 </summary>
-        public CriticalDamage CriticalDamage => Parameter.CriticalDamage;
+        public Defense Defense { get; }
 
         /// <summary>
         ///     被ダメージを受け取るメソッド。ダメージ量を引数として受け取り、体力値を減少させる処理を行う。

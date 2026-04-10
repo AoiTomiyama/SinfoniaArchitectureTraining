@@ -1,5 +1,6 @@
-﻿using SSTraining.Runtime.Domain.InGame.Battle;
-using UnityEngine;
+﻿using System;
+using SSTraining.Runtime.Domain.InGame.Battle;
+using Random = UnityEngine.Random;
 
 namespace SSTraining.Runtime.Application.InGame.Battle
 {
@@ -7,6 +8,7 @@ namespace SSTraining.Runtime.Application.InGame.Battle
     ///     クリティカル攻撃の処理を担当するクラス。
     ///     攻撃者のクリティカル発生確率とクリティカルダメージ倍率を考慮して、攻撃のダメージを修正する役割を持つ。
     /// </summary>
+    [Serializable]
     public class CriticalAttackStep : IAttackStep
     {
         public AttackContext ExecuteStep(in AttackContext context)
