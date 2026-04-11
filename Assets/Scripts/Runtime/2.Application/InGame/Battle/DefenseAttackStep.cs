@@ -1,6 +1,5 @@
 ﻿using System;
 using SSTraining.Runtime.Domain.InGame.Battle;
-using UnityEngine;
 
 namespace SSTraining.Runtime.Application.InGame.Battle
 {
@@ -15,8 +14,8 @@ namespace SSTraining.Runtime.Application.InGame.Battle
         {
             float defenderDefensePower = context.Defender.Defense.Value;
             
-            // ダメージ量から防御力を引いた値を計算する。（最小値は0）
-            Damage damageAfterDefense = Mathf.Min(0f, context.Damage.Value - defenderDefensePower);
+            // ダメージ量を防御力で割った値を計算する。
+            Damage damageAfterDefense = context.Damage / defenderDefensePower;
             return new AttackContext(context.Attacker, context.Defender, damageAfterDefense);
         }
     }
